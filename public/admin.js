@@ -1,6 +1,9 @@
 async function main() {
+
     let response = await fetch('http://localhost:3001/listBooks')
+
     let books = await response.json()
+
     books.forEach(renderBook)
 }
 
@@ -20,7 +23,7 @@ function renderBook(book) {
         fetch('http://localhost:3001/updateBook', {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application.json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 id: book.id,
@@ -28,7 +31,10 @@ function renderBook(book) {
             })
         })
     })
+
     li.append(quantityInput, saveButton)
+
     root.append(li)
 }
+
 main();
